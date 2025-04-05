@@ -1,8 +1,11 @@
-const express = require('express'); // Use require to import Express
-const { serverConfig ,loggerConfig} = require('./config'); // Use require to import the config
+const express = require('express'); 
+const { serverConfig ,loggerConfig} = require('./config'); 
 const apiRoutes=require('./routes');
 const app = express();
 
+
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 app.use('/api',apiRoutes);
 
 app.listen(serverConfig.PORT, () => {
